@@ -1,7 +1,11 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Scope } from '@nestjs/common';
 import { CreateSongsDTO } from './dto/songs.dto';
 
-@Injectable()
+@Injectable(
+    {
+        scope: Scope.TRANSIENT
+    }
+)
 export class SongsService {
 
     private readonly songs = [];
@@ -13,7 +17,7 @@ export class SongsService {
     }
 
     public getSongs() {
-        throw new Error("Stop wasting emotions");
+        // throw new Error("Stop wasting emotions");
         return this.songs;
     }
 }
